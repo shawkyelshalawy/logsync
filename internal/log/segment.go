@@ -4,12 +4,14 @@ import (
 	"fmt"
 	"os"
 	"path"
+	"sync"
 
 	api "github.com/shawlyelshalawy/logsync/api/v1"
 	"google.golang.org/protobuf/proto"
 )
 
 type Segment struct {
+	mu                     sync.Mutex
 	store                  *store
 	index                  *Index
 	baseOffset, nextOffset uint64
