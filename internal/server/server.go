@@ -140,9 +140,7 @@ func (s *grpcServer) Consume(ctx context.Context, req *api.ConsumeRequest) (
 	return &api.ConsumeResponse{Record: record}, nil
 }
 
-func (s *grpcServer) ProduceStream(
-	stream api.Log_ProduceStreamServer,
-) error {
+func (s *grpcServer) ProduceStream( stream api.Log_ProduceStreamServer, ) error {
 	for {
 		req, err := stream.Recv()
 		if err != nil {
